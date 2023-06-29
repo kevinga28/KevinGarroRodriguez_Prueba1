@@ -1,0 +1,42 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2709
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 -- Crear la base de datos\
+CREATE DATABASE IF NOT EXISTS prueba_1;\
+USE prueba_1;\
+\
+-- Crear la tabla estudiantes\
+CREATE TABLE IF NOT EXISTS estudiantes (\
+    id INT AUTO_INCREMENT PRIMARY KEY,\
+    nombre VARCHAR(50),\
+    identificacion VARCHAR(10),\
+    nivel_cursando VARCHAR(50),\
+    edad INT,\
+    altura DECIMAL(5, 2),\
+    peso DECIMAL(5, 2),\
+    genero VARCHAR(10)\
+);\
+\
+-- Insertar registros en la tabla estudiantes\
+INSERT INTO estudiantes (nombre, identificacion, nivel_cursando, edad, altura, peso, genero)\
+VALUES\
+    ('Juan', '1234567890', 'Noveno grado', 15, 1.65, 60.0, 'Masculino'),\
+    ('Maria', '0987654321', 'Once grado', 17, 1.70, 55.5, 'Femenino'),\
+    ('Pedro', '5678901234', 'Octavo grado', 14, 1.55, 50.2, 'Masculino'),\
+    ('Ana', '4321098765', 'Once grado', 18, 1.68, 58.8, 'Femenino'),\
+    ('Carlos', '9012345678', 'Noveno grado', 15, 1.72, 65.0, 'Masculino'),\
+    ('Laura', '3456789012', 'Octavo grado', 14, 1.60, 48.5, 'Femenino'),\
+    ('Luis', '6789012345', 'Noveno grado', 15, 1.75, 63.7, 'Masculino'),\
+    ('Sofia', '2109876543', 'Once grado', 17, 1.63, 54.3, 'Femenino'),\
+    ('Daniel', '4567890123', 'Octavo grado', 14, 1.70, 60.1, 'Masculino'),\
+    ('Carolina', '7890123456', 'Once grado', 16, 1.65, 52.9, 'Femenino'),\
+    ('Alejandro', '5432109876', 'Noveno grado', 15, 1.80, 70.2, 'Masculino'),\
+    ('Valeria', '8765432109', 'Octavo grado', 14, 1.58, 47.3, 'Femenino'),\
+    ('Gabriel', '1098765432', 'Once grado', 16, 1.72, 61.8, 'Masculino'),\
+    ('Camila', '4321567890', 'Noveno grado', 15, 1.63, 56.4, 'Femenino'),\
+    ('Andr\'e9s', '6789012345', 'Octavo grado', 14, 1.70, 63.2, 'Masculino');\
+}
