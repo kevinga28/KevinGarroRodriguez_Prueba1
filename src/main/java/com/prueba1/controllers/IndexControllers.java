@@ -17,7 +17,7 @@ public class IndexControllers {
     @GetMapping("/")
     public String index(Model model) {
         var estudiantes = this.estudianteService.getAllEstudiantes();
-        model.addAttribute("estudiantes", estudiantes);
+        model.addAttribute("Estudiante", estudiantes);
         return "index";
     }
     
