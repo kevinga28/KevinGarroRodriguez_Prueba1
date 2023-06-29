@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html th:attr="lang=${lang}" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="~{template.html :: head}"></head>
+<body>
+<div th:insert="~{template.html :: nav}"></div>
+<section class="container py-5">
+    <div class="row text-center pt-3">
+        <div class="col-lg-6 m-auto">
+            <button type="button" class="btn btn-primary open-modal"
+                    data-toggle="modal" data-target="#estudiantesModal">
+                Agregar nuevo estudiante
+            </button>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Identificacion</th>
+                    <th scope="col">Nivel_cursado</th>
+                    <th scope="col">Edad</th>
+                    <th scope="col">Altura</th>
+                    <th scope="col">Peso</th>
+                    <th scope="col">Genero</th>
+                    <th scope="col">Acciones</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="Estudiantes : ${estudiantes}">
+                    <td><span th:text="${estudiantes.id}"></span></td>
+                    <td><span th:text="${estudiantes.nombre}"> </span></td>
+                    <td><span th:text="${estudiantes.identificacion}"> </span></td>
+                    <td><span th:text="${estudiantes.nivel_cursado}"> </span></td>
+                    <td><span th:text="${estudiantes.edad}"> </span></td>
+                    <td><span th:text="${estudiantes.altura}"> </span></td>
+                    <td><span th:text="${estudiantes.peso}"> </span></td>
+                    <td><span th:text="${estudiantes.genero}"> </span></td>
+            
+                   
+                    </td>
+                    <td>
+                        <button type="button" th:attr="idEstudiantes=${estudiantes.id}" class="btn btn-primary open-modal"
+                                data-toggle="modal" data-target="#estudiantesModal">
+                            edit
+                        </button>
+                        <button type="button" th:attr="idEstudiantes=${estudiantes.id}" class="btn btn-danger open-modal btnDeleteProduct">
+                            delete
+                        </button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+<!-- this is the modal-->
+    <div class="modal fade" id="estudiantesModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Estudiante</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+
+                    <form id="formEstudiantes" action="#" method="post" th:action="@{/estudiantes/save}" th:object="${estudiantes}">
+                        <div class="form-group d-none" >
+                            <label for="id">Id</label>
+                            <input th:field="*{id}" type="number" class="form-control" id="id"
+                                   placeholder="id">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="descripcion">Nombre</label>
+                            <input th:field="*{nombre}" type="text" class="form-control" id="nombre"
+                                   placeholder="nombre">
+                        </div>
+                        <div class="form-group">
+                            <label for="detalle">Identifiacion</label>
+                            <input th:field="*{identificacion}" type="text" class="form-control" id="identificacion"
+                                   placeholder="Identificacion">
+                        </div>
+                        <div class="form-group">
+                            <label for="precio">Nivel Cursado</label>
+                            <input th:field="*{nivel_cursado}" type="number" class="form-control" id="nivel_cursado"
+                                   placeholder="nivel_cursado">
+                        </div>
+                          <div class="form-group " >
+                            <label for="id">Edad</label>
+                            <input th:field="*{edad}" type="number" class="form-control" id="edad"
+                                   placeholder="edad">
+                        </div>
+                         <div class="form-group">
+                            <label for="precio">Altura</label>
+                            <input th:field="*{altura}" type="number" class="form-control" id="altura"
+                                   placeholder="altura">
+                        </div>
+                          <div class="form-group " >
+                            <label for="id">Peso</label>
+                            <input th:field="*{peso}" type="number" class="form-control" id="peso"
+                                   placeholder="peso">
+                        </div>
+                         
+                        <div class="form-group">
+                            <label for="existencias">Genero</label>
+                            <input th:field="*{genero}" type="number" class="form-control" id="genero"
+                                   placeholder="genero">
+                        </div>
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" id="saveEstudiantes">Save changes
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+<div th:insert="~{template.html :: footer}"></div>
+<div th:insert="~{template.html :: scripts}"></div>
+
+<!-- This section is really important cause we are asssigning the list of products loaded in the model, into the js -->
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    estudiantes = /*[[${estudiantes}]]*/ 'default';
+    /*]]>*/
+</script>
+
+<script src="../js/views/estudiantes.js"></script>
+</body>
+</html>
